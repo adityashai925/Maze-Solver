@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+import random
 
 from Puzzle import Puzzle
 from Config import Config
@@ -7,7 +8,13 @@ from BouncyBall import BouncyBall
 
 
 PuzzleObj = Puzzle()
-Ball1 = BouncyBall([300, 150], -0.5, 5)
+balls = []
+for _ in range(100):
+    x_vel = random.randint(-500, 500) / 100
+    y_vel = random.randint(-500, 500) / 100
+
+    if x_vel != 0 and y_vel != 0:
+        balls.append(BouncyBall([300, 150], x_vel, y_vel))
 
 while True:
     for event in pygame.event.get():
@@ -16,7 +23,10 @@ while True:
             exit()
 
     PuzzleObj.draw_puzzle()
-    Ball1.move(PuzzleObj.TILES)
-    Ball1.draw()
+
+    for ball in balls:
+        ball.move(PuzzleObj.TILES)
+        ball.draw()
+
     pygame.display.update()
     Config.clock.tick(Config.FPS)
