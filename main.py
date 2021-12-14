@@ -9,18 +9,19 @@ from BouncyBall import BouncyBall
 
 PuzzleObj = Puzzle()
 balls = []
-for _ in range(100):
-    x_vel = random.randint(-500, 500) / 100
-    y_vel = random.randint(-500, 500) / 100
-
-    if x_vel != 0 and y_vel != 0:
-        balls.append(BouncyBall([300, 150], x_vel, y_vel))
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+
+    if len(balls) != 1000:
+        x_vel = random.randint(-350, 350) / 100
+        y_vel = random.randint(-350, 350) / 100
+
+        if x_vel != 0 and y_vel != 0:
+            balls.append(BouncyBall(Config.BALL_SPAWN_POS, x_vel, y_vel))
 
     PuzzleObj.draw_puzzle()
 

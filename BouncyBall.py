@@ -9,7 +9,7 @@ class BouncyBall:
         Has attrs for only one bouncy ball.
         """
         self.SIZE = 4
-        self.pos = pos
+        self.pos = pos.copy()
         self.x_vel = x_vel
         self.y_vel = y_vel
 
