@@ -16,7 +16,7 @@ while True:
             pygame.quit()
             exit()
 
-    if len(balls) != 1000:
+    if len(balls) != 2000:
         x_vel = random.randint(-350, 350) / 100
         y_vel = random.randint(-350, 350) / 100
 

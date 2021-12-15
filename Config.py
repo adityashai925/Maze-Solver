@@ -16,6 +16,6 @@ class Config:
     FPS = 60
     clock = pygame.time.Clock()
 
-    TILE_COLOR = (255, 255, 255)
+    TILE_COLOR = (241, 245, 140)
     BG_COLOR = (0, 0, 0)
     BALL_COLOR = (14, 235, 220)
