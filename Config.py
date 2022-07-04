@@ -13,4 +13,4 @@ class Config:
         self.FPS = 60
 
         self.BALL_COLOR = (3, 252, 215)
-        self.BALL_SIZE = 5
+        # self.BALL_SIZE = 5

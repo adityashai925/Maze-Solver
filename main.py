@@ -5,12 +5,14 @@ pygame.init()
 
 from Config import Config
 from BouncyBall import BouncyBall
+from Maze import Maze
 
 
 class Main:
     def __init__(self):
         """Has global functions and variables."""
         self.Settings = Config()
+        self.maze = Maze()
 
     def generate_balls(self):
         """Generates list containing BouncyBall objects"""
@@ -36,6 +38,7 @@ class Main:
     def draw(self):
         """Draws the maze and the balls."""
         self.Settings.win.fill((0, 0, 0))
+        self.Settings.win.blit(self.maze.img, (0, 0))
 
         for ball in self.balls:
             ball.draw()
@@ -52,7 +55,13 @@ class Main:
 
             for ball in self.balls:
                 ball.move()
-                # print(ball)
+
+                offset = (ball.pos[0] - ball.RADIUS / 2, ball.pos[1] - ball.RADIUS / 2)
+                collision = self.maze.mask.overlap(ball.mask, offset)
+
+                if collision:
+                    ball.collision(collision)
+                    # exit()
 
             self.draw()
             pygame.display.update()
